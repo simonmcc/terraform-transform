@@ -20,4 +20,3 @@ repos:
     rev: 5.4.2
     hooks:
     -   id: isort
-

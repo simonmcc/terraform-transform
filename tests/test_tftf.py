@@ -1,12 +1,11 @@
-from tftf import __version__
-
-
 import unittest
+
+from tftf import __version__
 
 
 class Testtftf(unittest.TestCase):
     def test_version(self):
-        self.assertEqual( __version__, "0.1.0")
+        self.assertEqual(__version__, "0.1.0")
 
     def test_upper(self):
         self.assertEqual("foo".upper(), "FOO")
