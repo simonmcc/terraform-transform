@@ -22,6 +22,7 @@ class Testtftf(unittest.TestCase):
         # the resource_changes entities that match [?contains(change.actions, 'delete')]
         delete_filter = "[?contains(change.actions, 'delete')]"
         create_filter = "[?contains(change.actions, 'create')]"
+
         source = "[?type == 'azurerm_private_dns_a_record'].{address: address, change: change.before.{name:name, records:records}}"
         target = "[?type == 'azurerm_private_dns_a_record'].{address: address, change: change.after.{name:name, records:records}}"
         correctMove = {
