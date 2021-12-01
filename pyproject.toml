@@ -4,10 +4,14 @@ version = "0.1.0"
 description = ""
 authors = ["Simon McCartney <smccartney@axon.com>"]
 
+[tool.poetry.scripts]
+tftf = "tftf.tftf:cli"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 terraplanfeed = "^0.9.2"
 jmespath = "^0.10.0"
+click = "^8.0.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

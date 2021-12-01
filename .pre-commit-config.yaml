@@ -9,6 +9,7 @@ repos:
     -   id: check-yaml
     -   id: check-merge-conflict
     -   id: check-added-large-files
+        args: ['--maxkb=1800']
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.3
     hooks:
