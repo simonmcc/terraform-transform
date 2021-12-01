@@ -1,0 +1,21 @@
+
+terraform {
+  required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "3.0.0"
+    }
+  }
+
+  required_version = ">= 0.14"
+}
+
+resource "random_pet" "petname" {
+  length    = 5
+  separator = "-"
+}
+
+resource "local_file" "stage1" {
+    content     = "foo!"
+    filename = "${path.module}/foo.bar"
+}

@@ -31,6 +31,10 @@ def cli(action, plan, transformations):
 
     moves = Transform(plan_dict, transformations_dict)
 
+    if len(tuple(moves)) == 0:
+        click.echo("tftf: no resources found matching transformations")
+        exit(0)
+
     cmds = []
     for m in moves:
         # we create the steps in a subprocess friendly list of lists
@@ -38,8 +42,10 @@ def cli(action, plan, transformations):
 
     if action == "apply":
         for cmd in cmds:
+            click.echo("Executing `{}`".format(" ".join(cmd)))
             subprocess.run(cmd)
     elif action == "plan":
+        click.echo("tftf will performe the following actions:")
         for cmd in cmds:
             click.echo(" ".join(cmd))
     else:

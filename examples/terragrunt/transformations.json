@@ -1,0 +1,6 @@
+[
+  {
+    "source": "[?type == 'local_file'].{address: address, change: change.before.{filename:filename, content:content}}",
+    "target": "[?type == 'local_file'].{address: address, change: change.after.{filename:filename, content:content}}"
+  }
+]

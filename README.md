@@ -1,9 +1,26 @@
-#!/usr/bin/env python3
-#
- Generate terraform state mv steps reduce delete/recreate churn
+# tftf - Terraform Transforms
+
+This tool will parse a Terraform plan file and mv resources that would normally be deleted & re-created.
+
+Arbitrary delete/re-create cycles can be prevented by moving the resourecs to their new address in terraform state, avoiding the delete/recreate.
+
+Potential source & target addresses are identified by JMESPath queries applied to the [Terraform Plan
+Representation](https://www.terraform.io/docs/internals/json-format.html#plan-representation)
+
+There's a `local_file` example in [examples/terraform](examples/terraform), and a wrapper `Makefile` use to simulate avoiding a destroy/create cycle by manipulating the terraform state.
 
 
- Given:
+Inspired by
+
+* https://github.com/bcochofel/terraplanfeed
+* https://github.com/aleksanderaleksic/tgmigrate
+* https://github.com/minamijoyo/tfmigrate
+
+
+
+## Detailed real-world example
+
+Given:
 ```hcl
  azurerm_private_dns_a_record.legacy_vm["peu1ew1labd001"] will be destgrbhhuvdvknibrvtegdldguberiiektcdnil
  royed
