@@ -10,6 +10,8 @@ build:
 	poetry build
 
 publish: build
+	# pypy-all is our internal repo, pypi-all is a group consisting of pypy-all & pypi-proxy
+	poetry config repositories.nexus https://nexus.taservs.net/repository/pypy-all/
 	poetry publish -r nexus
 
 entr:
