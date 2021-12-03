@@ -1,15 +1,25 @@
 [tool.poetry]
 name = "tftf"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Simon McCartney <smccartney@axon.com>"]
+readme = "README.md"
+homepage = "https://git.taservs.net/ops/tftf"
+repository = "https://git.taservs.net/ops/tftf"
+
+[[tool.poetry.source]]
+# proxy all package requests through the Nexus pypi-all grou
+# pypi-all  - group repo
+# pypi-proxy - vanilla caching proxy repo
+# pypy-all - our internally hosted python repo
+name = "nexus"
+url = "https://nexus.taservs.net/repository/pypi-all/"
 
 [tool.poetry.scripts]
 tftf = "tftf.tftf:cli"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-terraplanfeed = "^0.9.2"
 jmespath = "^0.10.0"
 click = "^8.0.3"
 

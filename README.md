@@ -166,3 +166,36 @@ Using a JMESPath query to identify potential source & target resources for `terr
 ```
 
 The JMESPath tranformation spec should result in a list of source & target dictionaries that have an address & change key, every source (i.e. resources that the current plan would destroy) is then compared against all of the resources the current plan would create, the comparison is a python dict equivalence. Matches are then recorded as a list of src/dst address pairs, and either reported or executed by `tftf`.
+
+# Installation
+
+Install via the internal Nexus PyPI group repo:
+
+```
+pip install --index-url https://nexus.taservs.net/repository/pypi-all/simple tftf
+```
+
+# Development
+
+TODO: Notes on using poetry
+
+# Publishing to nexus.taservs.net
+
+Configure nexus.taservs.net as a PyPI repository:
+
+```bash
+poetry config repositories.nexus https://nexus.taservs.net/repository/pypy-all/
+```
+
+Build & publish:
+
+```bash
+poetry build
+poetry publish -r nexus
+```
+
+Install from nexus
+
+```bash
+pip install https://nexus.taservs.net/repository/pypy-all/simple tftf
+```

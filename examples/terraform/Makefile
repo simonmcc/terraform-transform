@@ -17,4 +17,4 @@ stage2:
 	terraform plan -detailed-exitcode
 
 clean:
-	@rm -rf .terraform plan.out plan.json .terraform.lock.hcl terraform.tfstate terraform.tfstate.*.backup terraform.tf
+	@rm -rf .terraform plan.out plan.json foo.bar .terraform.lock.hcl terraform.tfstate terraform.tfstate.*.backup terraform.tf
