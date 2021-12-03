@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "tftf"
-version = "0.1.1"
+name = "terraform-transform"
+version = "0.2.0"
 description = ""
 authors = ["Simon McCartney <smccartney@axon.com>"]
 readme = "README.md"
-homepage = "https://git.taservs.net/ops/tftf"
-repository = "https://git.taservs.net/ops/tftf"
+homepage = "https://git.taservs.net/ops/terraform-transform"
+repository = "https://git.taservs.net/ops/terraform-transform"
 
 [[tool.poetry.source]]
-# proxy all package requests through the Nexus pypi-all grou
+# proxy all package requests through the Nexus pypi-all group repo
 # pypi-all  - group repo
 # pypi-proxy - vanilla caching proxy repo
 # pypy-all - our internally hosted python repo
@@ -16,10 +16,10 @@ name = "nexus"
 url = "https://nexus.taservs.net/repository/pypi-all/"
 
 [tool.poetry.scripts]
-tftf = "tftf.tftf:cli"
+tf-tf = "terraform_transform.tftf:cli"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 jmespath = "^0.10.0"
 click = "^8.0.3"
 

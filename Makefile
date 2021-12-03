@@ -1,13 +1,15 @@
 .PHONY: entr
 
 test:
+	poetry install
 	poetry run python -m unittest -v
-	(cd examples/terraform ; make)
+	(cd examples/terraform ; poetry run make)
+	(cd examples/terragrunt ; poetry run make)
 
 build:
 	poetry build
 
-publish:
+publish: build
 	poetry publish -r nexus
 
 entr:

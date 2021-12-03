@@ -13,7 +13,7 @@ stage2:
 	ln -s terraform.tf-stage2 terraform.tf
 	terraform plan -out=plan.out
 	terraform show -json plan.out > plan.json
-	tftf apply --plan plan.json --transformations transformations.json
+	tf-tf apply --plan plan.json --transformations transformations.json
 	terraform plan -detailed-exitcode
 
 clean:

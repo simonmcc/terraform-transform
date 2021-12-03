@@ -74,13 +74,13 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 Saved the plan to: plan.out
 ```
 
-`tftf` needs the json plan output:
+`tf-tf` needs the json plan output:
 
 ```bash
 terraform show -json plan.out > plan.json
 ```
 
-We now run `tftf` with this as the contents of  `transformations.json`:
+We now run `tf-tf` with this as the contents of  `transformations.json`:
 
 ```json
 [
@@ -94,7 +94,7 @@ We now run `tftf` with this as the contents of  `transformations.json`:
 This single transformation will identify any `local_file` resources that match based on the `filename` & `content` keys in the `change` plan.
 
 ```bash
-tftf apply --plan plan.json --transformations transformations.json
+tf-tf apply --plan plan.json --transformations transformations.json
 action is apply
 Executing `terraform state mv local_file.stage1 local_file.stage2`
 Move "local_file.stage1" to "local_file.stage2"

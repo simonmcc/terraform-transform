@@ -3,7 +3,7 @@ import logging
 import os
 import unittest
 
-from tftf.transform import Transform
+from terraform_transform.transform import Transform
 
 logger = logging.getLogger(__name__)
 

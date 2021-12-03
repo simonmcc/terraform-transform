@@ -1,4 +1,4 @@
-# tftf - Terraform Transformations
+# Terraform Transform
 
 This tool will parse a Terraform plan file and `terraform state mv` resources that would normally be deleted & re-created.
 
@@ -15,15 +15,15 @@ Inspired by
 
 ## `local_file` example
 
-There is a complete `local_file` example in [examples/terraform](examples/terraform), and a `Makefile` used to simulate avoiding a destroy/create cycle by manipulating the terraform state. There's also a [terragrunt](https://terragrunt.gruntwork.io/) [example](examples/terraform) where tftf is executed as part of a `before_hook`.
+There is a complete `local_file` example in [examples/terraform](examples/terraform), and a `Makefile` used to simulate avoiding a destroy/create cycle by manipulating the terraform state. There's also a [terragrunt](https://terragrunt.gruntwork.io/) [example](examples/terraform) where tf-tf is executed as part of a `before_hook`.
 
 Example execution:
 
 ```bash
 terraform plan -out=plan.out
 terraform show -json plan.out > plan.json
-tftf apply --plan plan.json --transformations transformations.json
-# tftf will then execute required `terraform state mv` commands
+tf-tf apply --plan plan.json --transformations transformations.json
+# tf-tf will then execute required `terraform state mv` commands
 Executing `terraform state mv local_file.stage1 local_file.stage2`
 Move "local_file.stage1" to "local_file.stage2"
 Successfully moved 1 object(s).
@@ -165,14 +165,14 @@ Using a JMESPath query to identify potential source & target resources for `terr
 ]
 ```
 
-The JMESPath tranformation spec should result in a list of source & target dictionaries that have an address & change key, every source (i.e. resources that the current plan would destroy) is then compared against all of the resources the current plan would create, the comparison is a python dict equivalence. Matches are then recorded as a list of src/dst address pairs, and either reported or executed by `tftf`.
+The JMESPath tranformation spec should result in a list of source & target dictionaries that have an address & change key, every source (i.e. resources that the current plan would destroy) is then compared against all of the resources the current plan would create, the comparison is a python dict equivalence. Matches are then recorded as a list of src/dst address pairs, and either reported or executed by `tf-tf`.
 
 # Installation
 
 Install via the internal Nexus PyPI group repo:
 
 ```
-pip install --index-url https://nexus.taservs.net/repository/pypi-all/simple tftf
+pip install --index-url https://nexus.taservs.net/repository/pypi-all/simple terraform-transform
 ```
 
 # Development
@@ -197,5 +197,5 @@ poetry publish -r nexus
 Install from nexus
 
 ```bash
-pip install https://nexus.taservs.net/repository/pypy-all/simple tftf
+pip install --index-url https://nexus.taservs.net/repository/pypi-all/simple terraform-transform
 ```
