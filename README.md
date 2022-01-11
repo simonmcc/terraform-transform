@@ -2,6 +2,8 @@
 
 This tool will parse a Terraform plan file and `terraform state mv` resources that would normally be deleted & re-created.
 
+It can also be used to generate Terraform >=1.1 `moved` statements for non-trivial moves (e.g. when the index of a resource address has changed)
+
 Arbitrary delete/re-create cycles can be prevented by moving the resources to their new address in terraform state, avoiding the delete/recreate.
 
 Potential source & target addresses are identified by JMESPath queries applied to the [Terraform Plan

@@ -23,9 +23,12 @@ logger = logging.getLogger(__name__)
 def cli(action, plan, transformations):
     """tf-tf - terraform state transformation
 
-    ACTION is either plan or apply to show the tfstate migrations that would be applied or actually apply them
+    ACTION is either plan, apply or moved
+
+    plan and apply are used to show the tfstate migrations that would be applied or actually apply them
+
+    moved will generate a set of  terraform 1.1.x moved statements
     """
-    click.echo(f"action is {action}")
     plan_dict = json.load(plan)
     transformations_dict = json.load(transformations)
 
@@ -48,6 +51,9 @@ def cli(action, plan, transformations):
         click.echo("tf-tf will performe the following actions:")
         for cmd in cmds:
             click.echo(" ".join(cmd))
+    elif action == "moved":
+        for m in moves:
+            click.echo(f"moved {{\n  from = {m.get('src')}\n  to = {m.get('dst')}\n}}\n")
     else:
         logger.error("Unknown action {action}")
         exit(1)
