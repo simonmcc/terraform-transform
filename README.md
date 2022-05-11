@@ -1,6 +1,6 @@
 # Terraform Transform
 
-This tool will parse a Terraform plan file and `terraform state mv` resources that would normally be deleted & re-created.
+This tool will parse a Terraform plan file and generate `terraform state mv` resources that would normally be deleted & re-created.
 
 It can also be used to generate Terraform >=1.1 `moved` statements for non-trivial moves (e.g. when the index of a resource address has changed)
 
